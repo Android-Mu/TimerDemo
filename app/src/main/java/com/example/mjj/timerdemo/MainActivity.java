@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onResume() {
         super.onResume();
-        timeCount = new TimeCount(btn1, 10000, 1000);
+        timeCount = new TimeCount(btn1, 60000, 1000);
     }
 
     @Override
@@ -102,11 +102,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    /**
+     * 监听按钮下直接调用即可
+     */
     private void sendMessageClick() {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                for (int i = 10; i >= 0; i--) {
+                for (int i = 59; i >= 0; i--) {
                     Message msg = myHandler.obtainMessage();
                     msg.arg1 = i;
                     myHandler.sendMessage(msg);
